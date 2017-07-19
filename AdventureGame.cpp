@@ -116,10 +116,6 @@ public:
 		}
 	}
 
-	void healthPotionUse() {
-		m_hit_points += 5;
-	}
-
 	void getItem() { //chance of item drop if won the fight
 		
 		int itemChance = getRandomNumber(1, 10);
