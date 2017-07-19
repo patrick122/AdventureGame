@@ -377,7 +377,7 @@ bool fight(Character &p, Monster &m) {
 
 			std::cout << "You did " << CharacterAttack << " damage. ";
 
-			if (MonsterHealth <= 0) {
+			if (MonsterHealth <= 0) { //when the monster's health us empty 
 				std::cout << "The monster's health is now dead! You are victorious! \n";
 				p.WinBonus();
 				std::cout << "\n";
@@ -389,7 +389,7 @@ bool fight(Character &p, Monster &m) {
 			//Sleep(2500);
 			std::cout << "The monster did " << MonsterAttack << " damage. ";
 
-			if (CharacterHealth <= 0) {
+			if (CharacterHealth <= 0) { //when your health is emtpy 
 				std::cout << "Your health is now 0! Sorry, you lose! \n";
 				std::cout << "\n";
 				return false;
@@ -408,7 +408,7 @@ bool fight(Character &p, Monster &m) {
 	return false;
 }
 
-std::string getPlayerChoice()
+std::string getPlayerChoice() //see if the player will want to play another round
 {
 	std::cout << "(y) to play another round, or (n) to end the game. ";
 
@@ -448,7 +448,7 @@ int main()
 
 	bool winStatus = fight(p, m);
 
-	if (winStatus) {
+	if (winStatus) { //checks if the user won the fight 
 		win_checker = true;
 		++win_counter;
 	}
@@ -463,9 +463,9 @@ int main()
 		winStatus = fight(p, m);
 		if (winStatus) {
 			win_checker = true;
-			p.getItem();
+			p.getItem(); //when you win the fight you get a chance the get an item 
 			++win_counter;
-			if (win_counter % 3 == 0) {
+			if (win_counter % 3 == 0) { // if win counter is divisible by 3 your level will increase and the AttackBonus() will execute
 				p.AttackBonus();
 				std::cout << "You leveled up! Your attack range is now " << p.GetCharAttackRange()[0] << " - " << p.GetCharAttackRange()[1] << " and you now have " << p.Characterhealth() << " hit points \n \n";
 			}
