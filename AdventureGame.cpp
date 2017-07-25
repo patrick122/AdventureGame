@@ -123,7 +123,7 @@ public:
 		if (itemChance > 7) {
 			Item item = static_cast<Item>(getRandomNumber(0, MAX_ITEMS - 1));
 			m_item.push_back(item);
-			std::cout << "That monster dropped a " << FindItemType(item) << "\n";
+			std::cout << "That monster dropped: " << FindItemType(item) << "\n";
 		}
 	}
 };
@@ -134,7 +134,7 @@ class CharacterChoice
 public:
 
 	static Character ChooseCharacter() {
-
+		
 		std::cout << "Please name your character (no spaces) \n";
 
 		std::string characterName;
@@ -143,7 +143,7 @@ public:
 		std::cin.ignore(32767, '\n');
 
 		while (true) {
-
+			
 			std::cout << "Please Choose a class: \nKnight (hit points: 20, attack range: 0-6 \nWizard (hit points: 10, attack range: 2-4 \nRanger (hit points: 15, attack range: 1-5 \n";
 
 			std::string charactertype;
@@ -345,7 +345,7 @@ bool fight(Character &p, Monster &m) {
 
 			while (turnDecision != 'a') {
 				p.printInventory();
-				std::cout << "What item do you want to use? Press 'a' to attack \n";
+				std::cout << "What item do you want to use (type the list number of the item)? Press 'a' to attack \n";
 				int useItem;
 				std::cin>>useItem;
 				if (std::cin.fail()) { //if you dont type an int value you will exit the loop and attack 
@@ -378,7 +378,7 @@ bool fight(Character &p, Monster &m) {
 			std::cout << "You did " << CharacterAttack << " damage. ";
 
 			if (MonsterHealth <= 0) { //when the monster's health us empty 
-				std::cout << "The monster's health is now dead! You are victorious! \n";
+				std::cout << "The monster is now dead! You are victorious! \n";
 				p.WinBonus();
 				std::cout << "\n";
 				return true;
